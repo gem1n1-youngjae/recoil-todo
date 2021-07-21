@@ -1,7 +1,13 @@
 import React from "react";
+import { RecoilRoot } from "recoil";
+import { TodoList } from "./Pages";
 
 function App() {
-  return <div className="App">todolist로 recoil을 연습하자.</div>;
+  return (
+    <RecoilRoot>
+      <TodoList />
+    </RecoilRoot>
+  );
 }
 
 export default App;
