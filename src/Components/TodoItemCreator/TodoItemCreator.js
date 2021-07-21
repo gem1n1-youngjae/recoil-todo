@@ -5,32 +5,33 @@ import { todoListState } from "../../Recoil/TodoAtom";
 const TodoItemCreator = () => {
   const [inputValue, setInputValue] = useState("");
   const setTodoList = useSetRecoilState(todoListState);
-  let nextId = useRef(0);
+  const nextId = useRef(0); //id 계산을 위해 useRef의 current프로퍼티 선언
 
-  const addItem = () => {
+  const onAddItem = () => {
+    //버튼 클릭시 Recoil에 있는 데이터 업데이트
     setTodoList((oldTodoList) => [
-      ...oldTodoList,
+      ...oldTodoList, // 이전에 생성되어있던 리스트 불러오기
       {
-        id: getId(),
-        text: inputValue,
-        isComplete: false,
+        id: getId(), //list 구분을 위한 id값 업데이트
+        text: inputValue, // inputValue안에 들어간 string을 text property에 업데이트
+        isComplete: false, // 수행을 아직 완료하지 않았으므로 default 값으로 false 업데이트
       },
     ]);
     setInputValue("");
   };
 
   const getId = () => {
-    return (nextId.current += 1);
+    return (nextId.current += 1); // id(length)값 +1
   };
 
   const onChange = (e) => {
-    setInputValue(e.target.value);
+    setInputValue(e.target.value); // input의 value를 inputValue라는 useState에 업데이트
   };
 
   return (
     <div>
       <input type="text" value={inputValue} onChange={onChange} />
-      <button onClick={addItem}>Add</button>
+      <button onClick={onAddItem}>Add</button>
     </div>
   );
 };
