@@ -4,31 +4,26 @@ import { todoListState } from "../../Recoil/TodoAtom";
 
 const TodoItem = ({ item }) => {
   const [todoList, setTodoList] = useRecoilState(todoListState);
-  const index = todoList.findIndex((listItem) => listItem === item);
 
-  const editItemText = ({ target: { value } }) => {
-    const newList = replaceItemAtIndex(todoList, index, {
-      ...item,
-      text: value,
-    });
+  const editItemText = (e) => {
+    const newList = todoList.map((listItem) =>
+      listItem.id === item.id ? { ...listItem, text: e.target.value } : listItem
+    ); // todo의 id가 같으면 text를 업데이트하고 아닌 것은 newlist를 생성하여 넣어준다.
     setTodoList(newList);
   };
 
   const toggleItemCompletion = () => {
-    const newList = replaceItemAtIndex(todoList, index, {
-      ...item,
-      isComplete: !item.isComplete,
-    });
+    const newList = todoList.map((listItem) =>
+      listItem.id === item.id
+        ? { ...listItem, isComplete: !item.isComplete }
+        : listItem
+    ); // todo의 id가 같으면 isComplete를 업데이트하고 아닌 것은 newlist를 생성하여 넣어준다.
     setTodoList(newList);
   };
 
   const deleteItem = () => {
-    const newList = todoList.filter((listItem) => listItem.id !== item.id);
+    const newList = todoList.filter((listItem) => listItem.id !== item.id); // todo의 id가 다르면 filter통하여 삭제 한다.
     setTodoList(newList);
-  };
-
-  const replaceItemAtIndex = (arr, index, newValue) => {
-    return [...arr.slice(0, index), newValue, ...arr.slice(index + 1)];
   };
 
   return (
