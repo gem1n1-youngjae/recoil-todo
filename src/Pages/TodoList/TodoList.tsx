@@ -6,7 +6,7 @@ import {
   TodoListFilters,
   TodoListStats,
 } from "../../Components";
-import { todoListState, filteredTodoListState } from "../../Recoil/TodoAtom";
+import { filteredTodoListState } from "../../Recoil/TodoAtom";
 
 const TodoList = () => {
   const todoList = useRecoilValue(filteredTodoListState);

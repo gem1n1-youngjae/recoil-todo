@@ -1,11 +1,11 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { useRecoilState } from "recoil";
 import { todoListState } from "../../Recoil/TodoAtom";
 
-const TodoItem = ({ item }) => {
+const TodoItem = (item: any) => {
   const [todoList, setTodoList] = useRecoilState(todoListState);
 
-  const editItemText = (e) => {
+  const editItemText = (e: ChangeEvent<HTMLInputElement>) => {
     const newList = todoList.map((listItem) =>
       listItem.id === item.id ? { ...listItem, text: e.target.value } : listItem
     ); // todo의 id가 같으면 text를 업데이트하고 아닌 것은 newlist를 생성하여 넣어준다.
