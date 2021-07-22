@@ -1,17 +1,22 @@
 import React from "react";
 import { useRecoilValue } from "recoil";
-import { TodoItem, TodoItemCreator } from "../../Components";
-import { todoListState } from "../../Recoil/TodoAtom";
+import {
+  TodoItem,
+  TodoItemCreator,
+  TodoListFilters,
+  TodoListStats,
+} from "../../Components";
+import { todoListState, filteredTodoListState } from "../../Recoil/TodoAtom";
 
 const TodoList = () => {
-  const todoList = useRecoilValue(todoListState);
+  const todoList = useRecoilValue(filteredTodoListState);
   const showList = todoList.map((todoItem) => (
     <TodoItem key={todoItem.id} item={todoItem} />
   ));
   return (
     <>
-      {/* <TodoListStats /> */}
-      {/* <TodoListFilters /> */}
+      <TodoListStats />
+      <TodoListFilters />
       <TodoItemCreator />
       {showList}
     </>
