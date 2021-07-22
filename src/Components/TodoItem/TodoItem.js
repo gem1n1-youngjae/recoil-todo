@@ -22,7 +22,7 @@ const TodoItem = ({ item }) => {
   };
 
   const deleteItem = () => {
-    const newList = todoList.filter((listItem) => listItem.id !== item.id); // todo의 id가 다르면 filter통하여 삭제 한다.
+    const newList = todoList.filter((listItem) => listItem.id !== item.id); // todo의 id가 다르면 filter 통하여 추출하고 남은 값을 반환한다.
     setTodoList(newList);
   };
 
