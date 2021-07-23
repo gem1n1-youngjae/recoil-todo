@@ -1,11 +1,11 @@
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { useRecoilState } from "recoil";
 import { todoListFilterState } from "../../Recoil/TodoAtom";
 
 const TodoListFilters = () => {
   const [filter, setFilter] = useRecoilState(todoListFilterState);
 
-  const updateFilter = (e) => {
+  const updateFilter = (e: ChangeEvent<HTMLSelectElement>) => {
     setFilter(e.target.value);
   };
 
