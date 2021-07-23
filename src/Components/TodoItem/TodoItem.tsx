@@ -2,7 +2,7 @@ import React, { ChangeEvent } from "react";
 import { useRecoilState } from "recoil";
 import { todoListState } from "../../Recoil/TodoAtom";
 
-const TodoItem = (item: any) => {
+const TodoItem = ({ item }: any) => {
   const [todoList, setTodoList] = useRecoilState(todoListState);
 
   const editItemText = (e: ChangeEvent<HTMLInputElement>) => {
