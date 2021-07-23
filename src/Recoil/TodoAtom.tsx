@@ -2,7 +2,13 @@ import { atom, selector } from "recoil";
 
 export const todoListState = atom({
   key: "todoListState",
-  default: [],
+  default: [
+    {
+      id: 1,
+      text: "Todo List를",
+      isComplete: false,
+    },
+  ],
 });
 
 export const todoListFilterState = atom({
