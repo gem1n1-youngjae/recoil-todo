@@ -1,8 +1,7 @@
 import { createGlobalStyle } from "styled-components";
+import background from "../Assets/bg1.png";
 
 const GlobalStyle = createGlobalStyle`
-  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;500;700&display=swap");
-  
   html,
   body,
   div,
@@ -130,6 +129,13 @@ const GlobalStyle = createGlobalStyle`
   }
   input, select, option{
     font-family: "Noto Sans KR", sans-serif;
+  }
+  body{
+    background-image: url(${background});
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
   }
 `;
 
