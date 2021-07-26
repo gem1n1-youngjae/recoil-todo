@@ -1,12 +1,16 @@
 import React from "react";
 import { RecoilRoot } from "recoil";
 import { TodoList } from "./Pages";
+import GlobalStyle from "./Style/GlobalStyle";
 
 function App() {
   return (
-    <RecoilRoot>
-      <TodoList />
-    </RecoilRoot>
+    <>
+      <GlobalStyle />
+      <RecoilRoot>
+        <TodoList />
+      </RecoilRoot>
+    </>
   );
 }
 
