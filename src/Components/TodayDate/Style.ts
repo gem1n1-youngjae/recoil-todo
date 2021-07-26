@@ -8,8 +8,9 @@ export const HeadBlock = styled.div`
     color: #343a40;
   }
   .day {
-    margin-top: 4px;
-    color: #868e96;
+    margin-top: 8px;
     font-size: 21px;
+    font-weight: lighter;
+    color: #868e96;
   }
 `;
