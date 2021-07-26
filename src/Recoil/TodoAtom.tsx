@@ -5,8 +5,8 @@ export const todoListState = atom({
   default: [
     {
       id: 1,
-      text: "Todo List를",
-      isComplete: false,
+      text: "타입스크립트와 리코일을 이용하여 리액트 투두 만들기",
+      isComplete: true,
     },
   ],
 });
