@@ -18,7 +18,8 @@ const TodoItemCreator = () => {
   };
 
   const onSubmit = (e: ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    //form으로 데이터 값 받기
+    e.preventDefault(); // 이벤트 방지
     setTodoList([
       ...oldTodoList, // 이전에 생성되어있던 리스트 불러오기
       {
