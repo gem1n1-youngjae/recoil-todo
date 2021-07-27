@@ -20,8 +20,8 @@ const TodoList = () => {
       <TodayDate />
       <TodoListStats />
       <TodoListFilters />
-      <TodoItemCreator />
       {showList}
+      <TodoItemCreator />
     </S.Container>
   );
 };

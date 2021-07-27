@@ -1,15 +1,28 @@
 import React, { ChangeEvent, useRef, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { todoListState } from "../../Recoil/TodoAtom";
+import { MdAdd } from "react-icons/md";
+import * as S from "./Style";
 
 const TodoItemCreator = () => {
+  const [open, setOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const setTodoList = useSetRecoilState(todoListState);
   const oldTodoList = useRecoilValue(todoListState);
   const nextId = useRef(1); //id 계산을 위해 useRef의 current프로퍼티 선언
 
+  const onToggle = () => setOpen(!open);
+
   const onAddItem = () => {
     //버튼 클릭시 Recoil에 있는 데이터 업데이트
+  };
+
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value); // input의 value를 inputValue라는 useState에 업데이트
+  };
+
+  const onSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setTodoList([
       ...oldTodoList, // 이전에 생성되어있던 리스트 불러오기
       {
@@ -18,6 +31,7 @@ const TodoItemCreator = () => {
         isComplete: false, // 수행을 아직 완료하지 않았으므로 default 값으로 false 업데이트
       },
     ]);
+    setOpen(false);
     setInputValue("");
   };
 
@@ -25,15 +39,25 @@ const TodoItemCreator = () => {
     return (nextId.current += 1); // id(length)값 +1
   };
 
-  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value); // input의 value를 inputValue라는 useState에 업데이트
-  };
-
   return (
-    <div>
-      <input type="text" value={inputValue} onChange={onChange} />
-      <button onClick={onAddItem}>Add</button>
-    </div>
+    <>
+      {open && (
+        <S.CreatorContainer>
+          <form onSubmit={onSubmit}>
+            <input
+              type="text"
+              value={inputValue}
+              onChange={onChange}
+              placeholder="할 일을 입력 후, Enter 를 누르세요"
+            />
+          </form>
+        </S.CreatorContainer>
+      )}
+
+      <S.PlusButton onClick={onToggle} open={open}>
+        <MdAdd />
+      </S.PlusButton>
+    </>
   );
 };
 
