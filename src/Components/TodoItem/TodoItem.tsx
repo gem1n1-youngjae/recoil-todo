@@ -1,6 +1,8 @@
-import React, { ChangeEvent } from "react";
+import React from "react";
 import { useRecoilState } from "recoil";
 import { todoListState } from "../../Recoil/TodoAtom";
+import { MdDelete, MdDone } from "react-icons/md";
+import * as S from "./Style";
 
 const TodoItem = ({ item }: any) => {
   const [todoList, setTodoList] = useRecoilState(todoListState);
@@ -20,15 +22,15 @@ const TodoItem = ({ item }: any) => {
   };
 
   return (
-    <div>
-      <input
-        type="checkbox"
-        checked={item.isComplete}
-        onChange={toggleItemCompletion}
-      />
-      <input type="text" value={item.text} onChange={editItemText} />
-      <button onClick={deleteItem}>X</button>
-    </div>
+    <S.ItmeContainer>
+      <S.CheckCircle checked={item.isComplete} onClick={toggleItemCompletion}>
+        {item.isComplete && <MdDone />}
+      </S.CheckCircle>
+      <S.TextBox checked={item.isComplete}>{item.text}</S.TextBox>
+      <S.Delete>
+        <MdDelete onClick={deleteItem} />
+      </S.Delete>
+    </S.ItmeContainer>
   );
 };
 
