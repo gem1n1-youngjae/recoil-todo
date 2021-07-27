@@ -1,12 +1,12 @@
 import styled, { css } from "styled-components";
 
 export const PlusButton = styled.button<{ open: boolean }>`
-  background: #38d9a9;
+  background: #01184a;
   &:hover {
-    background: #63e6be;
+    background: #00306b;
   }
   &:active {
-    background: #20c997;
+    background: #005eab;
   }
 
   z-index: 5;
