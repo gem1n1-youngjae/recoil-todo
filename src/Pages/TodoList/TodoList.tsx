@@ -20,7 +20,7 @@ const TodoList = () => {
       <TodayDate />
       <TodoListStats />
       <TodoListFilters />
-      {showList}
+      <S.ListContainer>{showList}</S.ListContainer>
       <TodoItemCreator />
     </S.Container>
   );

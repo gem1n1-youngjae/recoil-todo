@@ -11,3 +11,10 @@ export const Container = styled.div`
   margin-bottom: 32px;
   position: relative;
 `;
+
+export const ListContainer = styled.div`
+  flex: 1;
+  padding: 0 32px;
+  padding-bottom: 48px;
+  overflow-y: auto;
+`;
