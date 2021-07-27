@@ -13,10 +13,6 @@ const TodoItemCreator = () => {
 
   const onToggle = () => setOpen(!open);
 
-  const onAddItem = () => {
-    //버튼 클릭시 Recoil에 있는 데이터 업데이트
-  };
-
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value); // input의 value를 inputValue라는 useState에 업데이트
   };
